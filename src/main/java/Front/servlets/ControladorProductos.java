@@ -19,6 +19,8 @@ import javax.servlet.http.Part;
 
 import com.csvreader.CsvReader;
 
+import Front.modelo.Clientes;
+import Front.modelo.ClientesJSON;
 import Front.modelo.Productos;
 import Front.modelo.ProductosJSON;
 import Front.modelo.Proveedores;
@@ -42,6 +44,17 @@ public class ControladorProductos extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		String Listar = request.getParameter("Listar");
+		String codigo = request.getParameter("codigo");
+		String iva = request.getParameter("iva");
+		String nit = request.getParameter("NIT");
+		String nombre_prod = request.getParameter("nombre_prod");
+		String precio_c = request.getParameter("precio_c");
+		String precio_v = request.getParameter("precio_v");
+		String Agregar = request.getParameter("Agregar");
+		String consultar = request.getParameter("Buscar");
+		String eliminar = request.getParameter("Eliminar");
+		String modificar = request.getParameter("Actualizar");
+		
 		if (Listar != null) {
 			try {
 				ArrayList<Productos> lista = ProductosJSON.getJSON();
@@ -50,6 +63,183 @@ public class ControladorProductos extends HttpServlet {
 			} catch (Exception e) {
 				out.println("Catch :(");
 				// TODO: handle exception
+			}
+		}
+		if (consultar != null) {
+			if (codigo != "" && codigo != null) {
+				boolean existe = false;					
+				try {
+					ArrayList<Productos> lista = ProductosJSON.getJSON();
+					for (Productos producto_prueba: lista) {
+						if(producto_prueba.getCodigo_producto() == Long.parseLong(codigo)) {
+							existe = true;
+						}
+					}
+					if(!existe) {
+						request.setAttribute("validacion", 8);//El usuario no existe
+						request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+					}else {
+						ArrayList<Productos> listaid = ProductosJSON.getforIdJSON(codigo);
+						for(Productos items:listaid) {
+							request.setAttribute("producto", items );
+							request.getRequestDispatcher("Productos.jsp").forward(request, response);
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					out.println("Catch :(");
+					// TODO: handle exception
+				}
+			}else {
+				request.setAttribute("validacion", 0);//Ingrese el campo cedula
+				request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+			}
+		}
+		if (Agregar != null) {
+			if (codigo != "" && iva != "" && nit != "" && nombre_prod != "" && precio_c != "" && codigo != null && iva != null && nit != null && nombre_prod != null && precio_c != null && precio_v != "" && precio_v != null) {
+				boolean existe = false;
+				boolean existe2 = false;
+				try {
+					ArrayList<Productos> listaid = ProductosJSON.getforIdJSON(codigo);
+					for (Productos producto_prueba: listaid) {
+						if(producto_prueba.getCodigo_producto() == Long.parseLong(codigo)) {
+							existe = true;
+						}
+					}
+				} catch (Exception e) {
+					out.println("Catch :(");
+					// TODO: handle exception
+				}
+				try {
+					ArrayList<Proveedores> listaprov = ProveedoresJSON.getJSON();
+					for(Proveedores proveedor_prueba : listaprov) {
+						if(proveedor_prueba.getNitproveedor() == Long.parseLong(nit)) {
+							existe2 = true;
+						}
+					}
+					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				if (!existe) {
+					if(existe2) {
+						Productos producto = new Productos();
+						producto.setCodigo_producto(Long.parseLong(codigo));
+						producto.setIvacompra(Double.parseDouble(iva));
+						producto.setNitproveedor(Long.parseLong(nit));
+						producto.setNombre_producto(nombre_prod);
+						producto.setPrecio_compra(Double.parseDouble(precio_c));
+						producto.setPrecio_venta(Double.parseDouble(precio_v));
+						int creado = ProductosJSON.postJSON(producto);
+						System.out.println(creado);
+						if(creado == 200) {
+							request.setAttribute("validacion", 2);//producto Creado
+							request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+						}else {
+							request.setAttribute("validacion", 3);//Ha habido un error
+							request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+						}
+					}else {
+						request.setAttribute("validacion", 10);//El Nit no existe
+						request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+					}
+				}else {
+					request.setAttribute("validacion", 4);//El producto ya existe
+					request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+				}	
+			} else {
+				request.setAttribute("validacion", 1);//Ingrese todos los campos
+				request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+			}
+		}
+		if (eliminar != null) {
+			if (codigo != "" && codigo != null) {
+				boolean existe = false;					
+				try {
+					ArrayList<Productos> lista = ProductosJSON.getJSON();
+					for (Productos producto_prueba: lista) {
+						if(producto_prueba.getCodigo_producto() == Long.parseLong(codigo)) {
+							existe = true;
+						}
+					}
+					if(!existe) {
+						request.setAttribute("validacion", 8);//El usuario no existe
+						request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+					}else {
+						int borrado = ProductosJSON.deleteJSON(codigo);
+						if(borrado == 200) {
+							request.setAttribute("validacion", 5);//Usuario Borrado
+							request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+						}else {
+							request.setAttribute("validacion", 3);//Ha habido un error
+							request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+						}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+					out.println("Catch :(");
+					// TODO: handle exception
+				}
+			} else {
+				request.setAttribute("validacion", 0);//Ingrese el campo cedula
+				request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+			}
+		}
+		if (modificar != null) {
+			if (codigo != "" && iva != "" && nit != "" && nombre_prod != "" && precio_c != "" && codigo != null && iva != null && nit != null && nombre_prod != null && precio_c != null && precio_v != "" && precio_v != null) {
+				boolean existe = false;
+				boolean existe2 = false;
+				try {
+					ArrayList<Productos> listaid = ProductosJSON.getforIdJSON(codigo);
+					for (Productos producto_prueba: listaid) {
+						if(producto_prueba.getCodigo_producto() == Long.parseLong(codigo)) {
+							existe = true;
+						}
+					}
+				} catch (Exception e) {
+					out.println("Catch :(");
+					// TODO: handle exception
+				}
+				try {
+					ArrayList<Proveedores> listaprov = ProveedoresJSON.getJSON();
+					for(Proveedores proveedor_prueba : listaprov) {
+						if(proveedor_prueba.getNitproveedor() == Long.parseLong(nit)) {
+							existe2 = true;
+						}
+					}
+					
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+				if (existe) {
+					if(existe2) {
+						Productos producto = new Productos();
+						producto.setCodigo_producto(Long.parseLong(codigo));
+						producto.setIvacompra(Double.parseDouble(iva));
+						producto.setNitproveedor(Long.parseLong(nit));
+						producto.setNombre_producto(nombre_prod);
+						producto.setPrecio_compra(Double.parseDouble(precio_c));
+						producto.setPrecio_venta(Double.parseDouble(precio_v));
+						int creado = ProductosJSON.postJSON(producto);
+						System.out.println(creado);
+						if(creado == 200) {
+							request.setAttribute("validacion", 6);//Usuario Modificado
+							request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+						}else {
+							request.setAttribute("validacion", 3);//Ha habido un error
+							request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+						}
+					}else {
+						request.setAttribute("validacion", 11);//El nit no existe no se puede modificar
+						request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+					}
+				}else {
+					request.setAttribute("validacion", 7);//El usuario no existe no se puede modificar
+					request.getRequestDispatcher("/Productos.jsp").forward(request, response);
+				}	
+			} else {
+				request.setAttribute("validacion", 9);//Ingrese todos los campos
+				request.getRequestDispatcher("/Productos.jsp").forward(request, response);
 			}
 		}
 		

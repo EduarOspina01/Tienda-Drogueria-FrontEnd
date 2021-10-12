@@ -32,11 +32,15 @@ public class Controlador extends HttpServlet {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String accion = request.getParameter("accion");
+		PrintWriter out = response.getWriter();
 		if(accion.equals("Ingresar")) {
 			this.validarUsuarios(request, response);
 		}
 		if(accion.equals("Menu")) {
 			this.redireccionarMenu(request, response);
+		}else {
+			out.println("No entro a los IF");
+			out.println(accion);
 		}
 		
 	}

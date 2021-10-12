@@ -5,166 +5,218 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Productos</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-<style>
-body {
-	background-image:
-		url('https://image.freepik.com/vector-gratis/asistencia-sanitaria-medica-color-azul_1017-26800.jpg');
-}
-
-h3, p {
-	color: #;
-}
-</style>
-	<script type="text/javascript" src="./Codigos.js"></script>
+<meta charset="utf-8">
+<title>Ventas</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<script src="js/navbar.js"></script>
 </head>
 <body>
-	<header>
-		<!-- Navbar -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-success">
-			<div class="collapse navbar-collapse" id="navbar">
-				<ul class="navbar-nav">
-					<li class="nav-item active"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Principal">Inicio</a></li>
-					<!-- Boton Navbar Inicio  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Usuario">Usuarios</a></li>
-					<!-- Boton Navbar Usuario  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Cliente">Clientes</a></li>
-					<!-- Boton Navbar Cliente  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Proveedor">Proveedores</a></li>
-					<!-- Boton Navbar Proveedor  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Productos">Productos</a></li>
-					<!-- Boton Navbar Productos  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Ventas">Ventas</a></li>
-					<!-- Boton Navbar Ventas  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Reportes">Reportes</a></li>
-					<!-- Boton Navbar Reportes  -->
-				</ul>
+	<!-- Inicio Navbar -->
+	<nav class="navbar is-light" role="navigation"
+		aria-label="main navigation">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="Controlador?accion=Menu&menu=Principal">
+				<span class="material-icons"> add_circle_outline </span> <strong>Drogueria</strong>
+			</a> <a role="button" class="navbar-burger" aria-label="menu"
+				aria-expanded="false" data-target="navbarBasicExample"> <span
+				aria-hidden="true"> </span> <span aria-hidden="true"> </span> <span
+				aria-hidden="true"></span>
+			</a>
+		</div>
+
+		<div id="navbarBasicExample" class="navbar-menu">
+			<div class="navbar-start">
+				<a class="navbar-item" href="Controlador?accion=Menu&menu=Principal">
+					<span class="material-icons"> home </span> <strong> Inicio
+				</strong>
+				</a> <a class="navbar-item" href="Controlador?accion=Menu&menu=Usuario">
+					<span class="material-icons"> face </span> <strong> Modulo
+						Usuarios </strong>
+				</a> <a class="navbar-item" href="Controlador?accion=Menu&menu=Cliente">
+					<span class="material-icons"> groups </span> <strong>
+						Modulo Clientes </strong>
+				</a> <a class="navbar-item"
+					href="Controlador?accion=Menu&menu=Proveedor"> <span
+					class="material-icons"> local_shipping </span> <strong>
+						Modulo Proveedores </strong>
+				</a> <a class="navbar-item"
+					href="Controlador?accion=Menu&menu=Productos"> <span
+					class="material-icons"> medical_services </span> <strong>
+						Modulo Productos </strong>
+				</a> <a class="navbar-item" href="Controlador?accion=Menu&menu=Ventas">
+					<span class="material-icons"> local_grocery_store </span> <strong>
+						Modulo Ventas </strong>
+				</a> <a class="navbar-item" href="Controlador?accion=Menu&menu=Reportes">
+					<span class="material-icons"> feed </span> <strong> Modulo
+						Reportes </strong>
+				</a>
 			</div>
-			<!-- Boton salir -->
-			<a class="btn btn-outline-light"
-				href="Controlador?accion=Menu&menu=Salir"> Salir</a>
-		</nav>
-		<!-- Fin Navbar -->
-	</header>
-	<main class = "container-fluid">
-		<div class = "row mt-5">
-			<div class="col-lg-5 col-md-6 col12">
-				<div class = "card">
-					<div class = "card header bg-success text-light">
-						<span class = "text-center">Datos del Cliente</span>
-					</div>
-					<div class = "card-body ">
-					
-						<form action="ControladorVentas" method = "POST">          <!-- Primer formulario CLIENTE-->
-							<div class = "row">
-								<label class = "col-form-label">Cedula</label>
-								<div class = "col-sm-5">
-									<div class="input-group col-sm-5">
-  										<input class = "form-control" type="number" name ="txtCedula" value = "${cliente.getCedula_cliente()}"> <!-- Texto cedula del cliente -->
-  										<input class="btn btn-outline-success" type="submit" id="Buscar" name = "Buscar1" value ="Buscar Cliente"> <!-- Boton buscar cliente -->
-									</div>
-								</div>
-								<div class = "col-sm-6 mb-2">
-									<input class = "form-control" type = "text" disabled="disabled" name = "salidaCleinte" value = "${cliente.getNombre_cliente()}"> <!-- Texto nombre del cliente -->
-								</div>
-							</div>	
-						</form>
-						
-					</div>
-					<div class = "card header bg-success text-light">
-						<span class = "text-center">Datos del Producto</span>
-					</div>
-					<div class = "card-body">
-					
-						<form action="ControladorVentas" method = "POST">           <!-- Segundo Formulario PRODUCTO -->
-						<div class = "row">
-							<label class = "col-form-label">Codigo de producto</label>
-								<div class = "col-sm-5">
-									<div class="input-group col-sm-5">
-  										<input class = "form-control" type="text" name ="txtCod" value = "${producto.getCodigo_producto()}"> <!-- Texto Buscar  producto -->
-  										<input class="btn btn-outline-success" type="submit" id="Buscar" name = "Buscar2" value ="Buscar Producto"> <!-- Tboton para buscar el producto -->
-									</div>
-								</div>
-								<div class = "col-sm-6 mb-2">
-									<input class = "form-control" type = "text" disabled="disabled" name="nombre_prod" value = "${producto.getNombre_producto()}"> <!-- Texto nombre del producto -->
-								</div>
-						</div>
-						<div class = "row mb-4">
-							<label class = "col-form-label">Datos del producto</label>
-							<div class = "col-sm-4">
-								<div class="input-group col-sm-5 ">
-  									<span class="input-group-text bg-success text-light">Valor</span>
-  									<input class = "form-control" type = "text" disabled="disabled" name="valor" value = "${producto.getPrecio_venta()}"> <!-- Texto valor del producto -->
-								</div>
-							</div>
-							<div class = "col-sm-4">
-								<div class="input-group col-sm-5">
-  									<span class="input-group-text bg-success text-light">IVA</span>
-  									<input class = "form-control" type = "text" disabled="disabled" name="IVA" value = "${producto.getIvacompra()}"> <!-- Texto IVA del producto -->
-								</div>
-							</div>
-							<div class = "col-sm-3">
-								<div class="input-group col-sm-5">
-  									<span class="input-group-text bg-success text-light">Cantidad</span>
-  									<input class = "form-control" type = "number" name="cantidad" > <!-- Texto cantidad del producto -->
-								</div>
-							</div>
-						</div>
-						<div class = "row justify-content-md-center">
-							<div class="d-grid gap-2">
-								<input class="btn btn-success" type = "submit" name = "Agregar" value ="Agregar Producto"> <!-- Agregar producto al carro o lista de compras -->
-							</div>
-						</div>
-						</form>
-						
-						
+
+			<div class="navbar-end">
+				<div class="navbar-item">
+					<div class="buttons">
+						<a class="button is-success"
+							href="Controlador?accion=Menu&menu=Salir"> <strong>Salir</strong>
+						</a>
 					</div>
 				</div>
 			</div>
-			<div class="col-lg col-mg col-sm col">
-				<div class = "card">
-					<div class = "card header bg-transparent">
-						<form action="">
-							<div class = "d-flex justify-content-end">
-								<div class ="col-6"></div>
-								<div class ="col-3 p-3">
-									<p class="fw-bold text-end text-danger">N° FACTURA</p>
+		</div>
+	</nav>
+	<!-- Fin Navbar -->
+	<div id="background-image">
+		<div class="columns">
+			<div class="column is-half my-6">
+				<div class="card">
+					<header class="card-header ">
+						<p class="card-header-title has-background-success has-text-justified"> 
+							Infromacion de la venta
+						</p>
+					</header>
+					
+					<div class="card-content">
+						<form action="ControladorVentas" method="POST">
+						<div class="field is-horizontal">
+							<div class="field-label is-normal">
+								<label class="label">Cedula</label>
+							</div>
+							<div class="field-body">
+								<div class = "field is-expanded">
+									<div class="field has-addons">
+										<p class = "control is-expanded has-icons-left">
+											<input class="input" type="number" name ="txtCedula" placeholder="Ingrese la cedula del cliente" value = "${cliente.getCedula_cliente()}">
+											<span class="icon is-small is-left">
+          										<i class="fas fa-envelope"></i>
+        									</span>
+										</p>
+										<p class = "control is-expanded">
+											<button class="button is-success" name = "Buscar1" value ="Buscar Cliente">
+												Buscar
+											</button>
+										</p>
+									</div>
 								</div>
-								<div class ="col-2 m-2">
-									<input class = "form-control" type = "text" disabled="disabled" name="con_fac"> <!-- texto Consecutivo de la factura -->
+								<div class = "field is-expanded">
+									<p class= "control">
+										<fieldset disabled>
+											<input class="input" type="text" placeholder="Nombre Cliente" name = "salidaCleinte" value = "${cliente.getNombre_cliente()}">
+										</fieldset>
+									</p>
 								</div>
 							</div>
+						</div>
+						</form>
+						<form action="ControladorVentas" method="POST">
+						<div class="field is-horizontal">
+							<div class="field-label is-normal">
+   								<label class="label">Producto</label>
+  							</div>
+  							<div class="field-body">
+  								<div class="field">
+  									<div class="field has-addons">
+										<p class = "control is-expanded has-icons-left">
+											<input class="input" type="text" placeholder="Ingrese el codigo del producto" name ="txtCod" value = "${producto.getCodigo_producto()}">
+											<span class="icon is-small is-left">
+          										<i class="fas fa-envelope"></i>
+        									</span>
+										</p>
+										<p class = "control is-expanded">
+											<button class="button is-success" name = "Buscar2" value ="Buscar Producto">
+												Buscar
+											</button>
+										</p>
+									</div>
+  								</div>
+  								<div class="field is-expanded" >
+  									<p class= "control">
+										<fieldset disabled>
+											<input class="input" type="text" placeholder="Codigo Producto" name="nombre_prod" value = "${producto.getNombre_producto()}">
+										</fieldset>
+									</p>
+  								</div>
+  							</div>
+						</div>
+						<div class="field is-horizontal">
+							<div class="field-label"></div>
+							<div class="field-body">
+								<div class="field is-expanded">
+									<div class="field has-addons">
+										<p class="control">
+											<a class="button is-success" title="Disabled button" disabled>
+           										 Valor
+         									</a>
+										</p>
+										<p class="control is-expanded">
+											<fieldset disabled>
+											<input class="input" type="text" placeholder="Valor" name="valor" value = "${producto.getPrecio_venta()}">
+											</fieldset>
+										</p>
+									</div>
+								</div>
+								
+								<div class="field is-expanded">
+									<div class="field has-addons">
+										<p class="control">
+											<a class="button is-success" title="Disabled button" disabled>
+           										 IVA
+         									</a>
+										</p>
+										<p class="control is-expanded">
+											<fieldset disabled>
+											<input class="input" type="text" placeholder="IVA" name="IVA" value = "${producto.getIvacompra()}">
+											</fieldset>
+										</p>
+									</div>
+								</div>
+								
+								<div class="field is-expanded">
+									<div class="field has-addons">
+										<p class="control">
+											<a class="button is-success" title="Disabled button" disabled>
+           										 Cantidad
+         									</a>
+										</p>
+										<p class="control is-expanded">
+											<input class="input" type="text" placeholder="cantidad" name = "Agregar" value ="Agregar Producto">
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
 						</form>
 					</div>
-					<div class = "card-body">
-						<form action="">
-							<table class="table bg-light table-bordered table-hover table-stripped">
+					<footer class="card-footer">
+    					<p class="card-footer-item">
+     						<a href="#">Agregar Producto</a>
+    					</p>
+  					</footer>
+				</div>
+			</div>
+			<div class = "column my-6">
+				<div class="card">
+					<form action="ControladorVentas" method="POST">
+						<div class="card-content">
+							<div class="field is-horizontal">
+								<div class="field-label is-normal">
+									<label class="label has-text-danger">FACTURA DE VENTA N°</label>
+								</div>
+								<div class="field-body">
+									<div class="field">
+										<p class="control is-expanded">
+											<fieldset disabled>
+											<input class="input" type="text" placeholder="000000" name="con_fac">
+											</fieldset>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-content">
+							<table class="table is-fullwidth">
 								<thead>
 									<tr>
 										<th>Item</th>
@@ -172,72 +224,76 @@ h3, p {
 										<th>Producto</th>
 										<th>Cantidad</th>
 										<th>Total</th>
-										<th></th>
 									</tr>
 								</thead>
-								<tbody>		
+								<tbody>
 									<c:forEach var="usuarios" items="${lista}">
 										<tr>
-											<td>${usuarios.getCedula_usuario()}</td>
-											<td>${usuarios.getEmail_usuario()}</td>
-											<td>${usuarios.getNombre_usuario()}</td>
-											<td>${usuarios.getPassword()} <input class="form-control" type ="number" name = "tabla_cantidad"> </td> <!-- texto para agregar cantidad adicional a la compra -->
-											<td>Editar</td>
-											<td> <input class="btn btn-sm-outline-success" type ="submit" name="agregar_tabla" value="OK"> <!-- Boton agregar cantidad a la comrpa -->
-											<input class="btn btn-sm-outline-danger" type ="submit" name="eliminar_tabla" value ="Borrar">   <!-- Boton quitar producto a la comrpa -->
-											</td>
 										</tr>
-									</c:forEach>					
+									</c:forEach>
 								</tbody>
 							</table>
-						</form>
-					</div>
-					<div class= "card-footer">
-						<form action="">
-							<div class = row>
-								<div class = "col-5">
-									<input class = "btn btn-success" type="submit" name="Finalizar" value="Finalizar Compra"> <!-- Boton finalizar comrpa -->
-									<input class = "btn btn-danger" type="submit" name="Cancelar" value="Cancelar Compra"> <!-- Boton cancelar comrpa -->
+						</div>
+						<div>
+						</div>
+						<div class="card-content">
+							<div class="field is-grouped is-grouped-centered">
+ 				 				<p class="control">
+    								<a class="button is-primary">
+      									Confirmar venta
+    								</a>
+  								</p>
+  								<p class="control">
+    								<a class="button is-danger">
+      									Cancelar Venta
+    								</a>
+  								</p>
+							</div>
+							<div class="field is-horizontal">
+								<div class="field-label is-normal">
+									<label class="label has-text-danger">TOTAL VENTA:</label>
 								</div>
-								<div class = "col-7">
-									<div class = "d-flex justify-content-end">
-										<div class ="col-4 p-2">
-											<p class="fw-bold text-end text-danger">TOTAL VENTA:</p>
-										</div>
-										<div class ="col-3 p-2">
-											<input class = "form-control" type = "text" disabled="disabled" name="total_venta"> <!-- Texto para el valor de la venta sin IVA -->
-										</div>
-									</div>
-									<div class = "d-flex justify-content-end">
-										<div class ="col-4 p-2">
-											<p class="fw-bold text-end text-danger">TOTAL IVA:</p>
-										</div>
-										<div class ="col-3 p-2">
-											<input class = "form-control" type = "text" disabled="disabled" name="total_iva"> <!-- Texto para el valor total del IVA -->
-										</div>
-									</div>
-									<div class = "d-flex justify-content-end">
-										<div class ="col-4 p-2">
-											<p class="fw-bold text-end text-danger">TOTAL CON IVA:</p>
-										</div>
-										<div class ="col-3 p-2">
-											<input class = "form-control" type = "text" disabled="disabled" name="total_con_iva"> <!-- Texto para el valor total con IVA -->
-										</div>
+								<div class="field-body">
+									<div class="field">
+										<p class="control">
+											<fieldset disabled>
+												<input class="input" type="text" placeholder="0.00">
+											</fieldset>
+										</p>
 									</div>
 								</div>
-							</div>	
-						</form>
-					</div>
+								
+								<div class="field-label is-normal">
+									<label class="label has-text-danger">TOTAL IVA:</label>
+								</div>
+								<div class="field-body">
+									<div class="field">
+										<p class="control">
+											<fieldset disabled>
+												<input class="input" type="text" placeholder="0.00">
+											</fieldset>
+										</p>
+									</div>
+								</div>
+								
+								<div class="field-label is-normal">
+									<label class="label has-text-danger">TOTAL CON IVA:</label>
+								</div>
+								<div class="field-body">
+									<div class="field">
+										<p class="control">
+											<fieldset disabled>
+												<input class="input" type="text" placeholder="0.00">
+											</fieldset>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-	</main>
-	<!-- Script de bootstrap5  -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-		crossorigin="anonymous">
-		
-	</script>
+	</div>
 </body>
 </html>

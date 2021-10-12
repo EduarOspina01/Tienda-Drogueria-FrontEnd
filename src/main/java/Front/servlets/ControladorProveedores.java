@@ -9,6 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import Front.modelo.Clientes;
 import Front.modelo.Proveedores;
 import Front.modelo.ProveedoresJSON;
 
@@ -34,7 +36,7 @@ public class ControladorProveedores extends HttpServlet {
 		String ciudad = request.getParameter("ciudad");
 		String direccion = request.getParameter("Direcion");
 		String telefono = request.getParameter("Tel");
-		String consultar = request.getParameter("Consultar");
+		String consultar = request.getParameter("Buscar");
 		String Agregar = request.getParameter("Agregar");
 		String Listar = request.getParameter("Listar_Proveedores");
 		String eliminar = request.getParameter("Eliminar");
@@ -65,8 +67,10 @@ public class ControladorProveedores extends HttpServlet {
 						request.getRequestDispatcher("/Proveedores.jsp").forward(request, response);
 					}else {
 						ArrayList<Proveedores> listaid = ProveedoresJSON.getforIdJSON(nit);
-						request.setAttribute("lista", listaid );
-						request.getRequestDispatcher("/Proveedores.jsp").forward(request, response);
+						for(Proveedores suplier:listaid) {
+							request.setAttribute("proveedor", suplier );
+							request.getRequestDispatcher("Proveedores.jsp").forward(request, response);
+						}
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -193,21 +197,6 @@ public class ControladorProveedores extends HttpServlet {
 			} else {
 				request.setAttribute("validacion", 9);//Ingrese todos los campos
 				request.getRequestDispatcher("/Proveedores.jsp").forward(request, response);
-			}
-		}
-		String editar = request.getParameter("editar");
-		if(editar != null) {
-			Long id = Long.parseLong(request.getParameter("id"));
-			try {
-				ArrayList<Proveedores> listaid = ProveedoresJSON.getforIdJSON(String.valueOf(id));
-				Proveedores supplier = new Proveedores();
-				for (int i = 0;i<listaid.size();i++) {
-					supplier = listaid.get(i);
-				}
-				request.setAttribute("proveedor", supplier);
-				request.getRequestDispatcher("/Proveedores.jsp").forward(request, response);
-			} catch (Exception e) {
-				out.println("Catch editar aquiiiiii");
 			}
 		}
 	}

@@ -68,7 +68,6 @@ public class UsuariosJSON {
 		for (int i = 0; i < inp.length; i++) {
 			json += (char) inp[i];
 		}
-		System.out.println(json);
 		ArrayList<Usuarios> lista = new ArrayList<Usuarios>();
 		lista = parsingUsuarios(json);
 		http.disconnect();

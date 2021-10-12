@@ -41,7 +41,7 @@ public class ControladorClientes extends HttpServlet {
 		String email = request.getParameter("email");
 		String nombre = request.getParameter("nombre");
 		String telefono = request.getParameter("telefono");
-		String consultar = request.getParameter("Consultar");
+		String consultar = request.getParameter("Buscar");
 		String Agregar = request.getParameter("Agregar");
 		String Listar = request.getParameter("Listar_Clientes");
 		String eliminar = request.getParameter("Eliminar");
@@ -72,8 +72,10 @@ public class ControladorClientes extends HttpServlet {
 						request.getRequestDispatcher("/Cliente.jsp").forward(request, response);
 					}else {
 						ArrayList<Clientes> listaid = ClientesJSON.getforIdJSON(cedula);
-						request.setAttribute("lista", listaid );
-						request.getRequestDispatcher("Cliente.jsp").forward(request, response);
+						for(Clientes customer:listaid) {
+							request.setAttribute("clientes", customer );
+							request.getRequestDispatcher("Cliente.jsp").forward(request, response);
+						}
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -198,24 +200,8 @@ public class ControladorClientes extends HttpServlet {
 					request.getRequestDispatcher("/Cliente.jsp").forward(request, response);
 				}	
 			} else {
-				request.setAttribute("validacion", 1);//Ingrese todos los campos
+				request.setAttribute("validacion", 9);//Ingrese todos los campos
 				request.getRequestDispatcher("/Cliente.jsp").forward(request, response);
-			}
-		}
-		String editar = request.getParameter("editar");
-		if(editar != null) {
-			Long id = Long.parseLong(request.getParameter("id"));
-			try {
-				ArrayList<Clientes> listaid = ClientesJSON.getforIdJSON(String.valueOf(id));
-				Clientes cliente = new Clientes();
-				for (int i = 0;i<listaid.size();i++) {
-					cliente = listaid.get(i);
-				}
-				request.setAttribute("clientes", cliente);
-				request.getRequestDispatcher("Cliente.jsp").forward(request, response);
-			} catch (Exception e) {
-				out.println("Catch editar aquiiiiii");
-				out.println(cedula);
 			}
 		}
 	}

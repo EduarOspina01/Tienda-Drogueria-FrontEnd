@@ -38,7 +38,7 @@ public class ControladorUsuarios extends HttpServlet {
 		String usuario = request.getParameter("user");
 		String contrasena = request.getParameter("pass");
 		//botones
-		String consultar = request.getParameter("Consultar");
+		String consultar = request.getParameter("Buscar");
 		String Agregar = request.getParameter("Agregar");
 		String Listar = request.getParameter("Listar_Usuarios");
 		String eliminar = request.getParameter("Eliminar");
@@ -69,8 +69,10 @@ public class ControladorUsuarios extends HttpServlet {
 						request.getRequestDispatcher("/Usuario.jsp").forward(request, response);
 					}else {
 						ArrayList<Usuarios> listaid = UsuariosJSON.getforIdJSON(cedula);
-						request.setAttribute("lista", listaid );
-						request.getRequestDispatcher("Usuario.jsp").forward(request, response);
+						for(Usuarios user:listaid) {
+							request.setAttribute("usuarios", user );
+							request.getRequestDispatcher("Usuario.jsp").forward(request, response);
+						}
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -195,24 +197,8 @@ public class ControladorUsuarios extends HttpServlet {
 					request.getRequestDispatcher("/Usuario.jsp").forward(request, response);
 				}	
 			} else {
-				request.setAttribute("validacion", 1);//Ingrese todos los campos
+				request.setAttribute("validacion", 9);//Ingrese todos los campos
 				request.getRequestDispatcher("/Usuario.jsp").forward(request, response);
-			}
-		}
-		String editar = request.getParameter("editar");
-		if(editar != null) {
-			Long id = Long.parseLong(request.getParameter("id"));
-			try {
-				ArrayList<Usuarios> listaid = UsuariosJSON.getforIdJSON(String.valueOf(id));
-				Usuarios user = new Usuarios();
-				for (int i = 0;i<listaid.size();i++) {
-					user = listaid.get(i);
-				}
-				request.setAttribute("usuarios", user);
-				request.getRequestDispatcher("Usuario.jsp").forward(request, response);
-			} catch (Exception e) {
-				out.println("Catch editar aquiiiiii");
-				out.println(cedula);
 			}
 		}
 	}

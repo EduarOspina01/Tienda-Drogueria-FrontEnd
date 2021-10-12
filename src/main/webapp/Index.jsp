@@ -2,102 +2,116 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
 <meta charset="ISO-8859-1">
 <meta charset="utf-8">
 <title>Login DROGUERIA</title>
-<!-- Link que carga todas las librerias de bootstrap5 -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-
-<style type="text/css">
-body {
-	background:
-		url(https://image.freepik.com/vector-gratis/asistencia-sanitaria-medica-color-azul_1017-26800.jpg);
-}
-
-.bg {
-	background-image: url(img/logo2.png);
-	background-position: center;
-	background-size: cover;
-}
-</style>
-
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
 <body>
-	<!-- JavaScript Bundle with Popper -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-		crossorigin="anonymous"></script>
-
-
-	<!-- Se crea un div con la clase container de bootstrap para centrar la pagina -->
-	<div = class="container w-75 bg-primary mt-5 rounded shadow">
-		<!-- Se crean un div con la clase row para encapsular todo el codigo HTML y CSS-->
-		<div = class="row align-items-stretch">
-			<div
-				= class="col bg bg-white d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
-				<!-- Responsive -->
+	<!-- div con el fondo de la pagina -->
+	<div id="background-image"></div>
+	<!-- div para centrar el contenido en la pagina -->
+	<div id="login-form-container">
+		<!-- Clase card de bulma e inicio del login -->
+		<div class="card" style="width: 600px;">
+			<div class="card-image">
+				<figure class="image ">
+					<img src="img/logo2.png" alt="Placeholder image">
+				</figure>
 			</div>
-			<div = class="col bg-white p-5 rounded-end">
-				<!-- clase que crea una columna o marco invisible -->
-				<div class="text-end">
-					<!-- clase que alinea el texto al final de la columna -->
-					<img alt="" src="img/logo.jpg" width="48">
-					<!-- Se carga el logoy se alinea al final como se explica anteriormente -->
+			<div class="card-content">
+				<div class="media">
+					<p class="is-size-2 has-text-justified">Bienvenidos a DROGUERIA</p>
 				</div>
-				<h2 class="fw-bold text-center pt-5 mb-5">Bienvenidos a
-					DROGUERIA</h2>
-				<!-- la clase fw-bold da negrilla text center centra y pt y mb da volumen al texto -->
-				<div class=fluid-container>
-				<div class="card border border-white" >
-			
-				<!-- Validacion si usuarios son incorrectos -->
-					<c:if test="${validacion == 0}">
-						<div class="card-body bg-danger rounded">
-							<h5 class = text-center>Usuario o contraseña incorrectas, intente de nuevo</h5>
-						</div>
-					</c:if>	
-					<c:if test="${validacion == 1}">
-						<div class="card-body bg-danger rounded">
-							<h5 class = text-center>Por favor llene todos los campos</h5>
-						</div>
-					</c:if>	
-					
-				</div>
-			</div>
-			
-			
-				<!-- LOGIN -->
-				<form action="Controlador" method="GET">
-					<!-- formulario -->
-					<div class="mb-4">
-						<!-- margen al texto -->
-						<label class="form-label">Usuario</label>
-						<input type="text" class="form-control" name="txtUsuario">
-						<!-- Input Usuario -->
-					</div>
-					<div class="mb-4"> 
-						<label for="password" class="form-label">Contraseña</label> 
-						<input type="password" class="form-control" name="txtContrasena">
-						<!-- Input Contraseña -->
-					</div>
-					<div class="text-center">
-						<!-- una cuadricula para que el boton quede releno en toda la columna -->
-						<button type="submit" name="accion" class="btn btn-success my-1" value="Ingresar">Ingresar</button>
-						<!-- Boton de ingreso -->
-					</div>
-				</form>
 				
+				<c:set var = "inicio" value = "2"/> <!-- Probar este codigo -->
+				<c:if test="${validacion == 0}">
+					<c:set var = "inicio" value = "0"/>
+				</c:if>
+				<c:if test="${validacion == 1}">
+					<c:set var = "inicio" value = "0"/>
+				</c:if>
+				<form action="Controlador" method="GET">
+				<div class="content">
+				
+				<!-- Validaciones -->
+				<c:if test="${inicio == 2}">
+					<div class="field">
+						<p class="control has-icons-left">
+							<input class="input is-primary" type="text" placeholder="Ingrese su Usuario" name="txtUsuario"> 
+								<span class="icon is-small is-left"> 
+									<span class="material-icons"> account_circle </span>
+								</span>
+							
+						</p>
+					</div>
+					<div class="field">
+						<p class="control has-icons-left">
+							<input class="input is-primary" type="password" placeholder="Ingrese su Contraseña" name="txtContrasena">
+							<span class="icon is-small is-left"> 
+								<span class="material-icons"> lock </span>
+							</span>
+						</p>
+					</div>
+				</c:if>
+				
+				<c:if test="${validacion == 0}">
+					<div class="field">
+						<p class="control has-icons-left">
+							<input class="input is-danger" type="text" placeholder="Usuario o contraseña incorrecta" name="txtUsuario"> 
+								<span class="icon is-small is-left"> 
+									<span class="material-icons"> account_circle </span>
+								</span>
+							
+						</p>
+					</div>
+					<div class="field">
+						<p class="control has-icons-left">
+							<input class="input is-danger" type="password" placeholder="Usuario o contraseña incorrecta" name="txtContrasena">
+							<span class="icon is-small is-left"> 
+								<span class="material-icons"> lock </span>
+							</span>
+						</p>
+					</div>
+				</c:if>
+				
+				<c:if test="${validacion == 1}">
+					<div class="field">
+						<p class="control has-icons-left">
+							<input class="input is-danger" type="text" placeholder="Por favor llene todos los campos" name="txtUsuario"> 
+								<span class="icon is-small is-left"> 
+									<span class="material-icons"> account_circle </span>
+								</span>
+							
+						</p>
+					</div>
+					<div class="field">
+						<p class="control has-icons-left">
+							<input class="input is-danger" type="password" placeholder="Por favor llene todos los campos" name="txtContrasena">
+							<span class="icon is-small is-left"> 
+								<span class="material-icons"> lock </span>
+							</span>
+						</p>
+					</div>
+				</c:if>
+					<div class="field">
+						<button class="button is-fullwidth is-success is-active" name = "accion" value = "Ingresar">
+							<span class="material-icons"> login </span>
+							<strong>Ingresar</strong> 
+						 </button>
+						<!--  <input class="button is-fullwidth is-light is-active" type = "submit" name = "action" value = "Ingresar">-->
+					</div>
+				</div>
+				</form>
 				
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

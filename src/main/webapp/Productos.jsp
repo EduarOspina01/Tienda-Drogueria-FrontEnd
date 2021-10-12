@@ -5,199 +5,277 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Productos</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-<style>
-body {
-	background-image:
-		url('https://image.freepik.com/vector-gratis/asistencia-sanitaria-medica-color-azul_1017-26800.jpg');
-}
-
-h3, p {
-	color: #;
-}
-</style>
-	<script type="text/javascript" src="./Codigos.js"></script>
-</head>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<script src="js/navbar.js"></script>
+<script type="text/javascript" src="js/Codigos.js"></script>
 <body>
-	<header>
-		<!-- Navbar -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-success">
-			<div class="collapse navbar-collapse" id="navbar">
-				<ul class="navbar-nav">
-					<li class="nav-item active"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Principal">Inicio</a></li>
-					<!-- Boton Navbar Inicio  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Usuario">Usuarios</a></li>
-					<!-- Boton Navbar Usuario  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Cliente">Clientes</a></li>
-					<!-- Boton Navbar Cliente  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Proveedor">Proveedores</a></li>
-					<!-- Boton Navbar Proveedor  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Productos">Productos</a></li>
-					<!-- Boton Navbar Productos  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Ventas">Ventas</a></li>
-					<!-- Boton Navbar Ventas  -->
-					<li class="nav-item"><a
-						style="margin-left: 10px; border: none"
-						class="btn btn-outline-light"
-						href="Controlador?accion=Menu&menu=Reportes">Reportes</a></li>
-					<!-- Boton Navbar Reportes  -->
-				</ul>
+	<!-- Inicio Navbar -->
+	<nav class="navbar is-light" role="navigation"
+		aria-label="main navigation">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="Controlador?accion=Menu&menu=Principal">
+				<span class="material-icons"> add_circle_outline </span> <strong>Drogueria</strong>
+			</a> <a role="button" class="navbar-burger" aria-label="menu"
+				aria-expanded="false" data-target="navbarBasicExample"> <span
+				aria-hidden="true"> </span> <span aria-hidden="true"> </span> <span
+				aria-hidden="true"></span>
+			</a>
+		</div>
+
+		<div id="navbarBasicExample" class="navbar-menu">
+			<div class="navbar-start">
+				<a class="navbar-item" href="Controlador?accion=Menu&menu=Principal">
+					<span class="material-icons"> home </span> <strong> Inicio
+				</strong>
+				</a> <a class="navbar-item" href="Controlador?accion=Menu&menu=Usuario">
+					<span class="material-icons"> face </span> <strong> Modulo
+						Usuarios </strong>
+				</a> <a class="navbar-item" href="Controlador?accion=Menu&menu=Cliente">
+					<span class="material-icons"> groups </span> <strong>
+						Modulo Clientes </strong>
+				</a> <a class="navbar-item"
+					href="Controlador?accion=Menu&menu=Proveedor"> <span
+					class="material-icons"> local_shipping </span> <strong>
+						Modulo Proveedores </strong>
+				</a> <a class="navbar-item"
+					href="Controlador?accion=Menu&menu=Productos"> <span
+					class="material-icons"> medical_services </span> <strong>
+						Modulo Productos </strong>
+				</a> <a class="navbar-item" href="Controlador?accion=Menu&menu=Ventas">
+					<span class="material-icons"> local_grocery_store </span> <strong>
+						Modulo Ventas </strong>
+				</a> <a class="navbar-item" href="Controlador?accion=Menu&menu=Reportes">
+					<span class="material-icons"> feed </span> <strong> Modulo
+						Reportes </strong>
+				</a>
 			</div>
-			<!-- Boton salir -->
-			<a class="btn btn-outline-light"
-				href="Controlador?accion=Menu&menu=Salir"> Salir</a>
-		</nav>
-		<!-- Fin Navbar -->
-	</header>
-	<div class="container-fluid">
-		<div class="row mt-5">
-			<div class="col">
-				<div class="card bg-transparent col-12 border-0">
-					<div class="mb-3">
-						<!-- Cargar archivo -->
-						<form method="post" name="formulario"
-							enctype="multipart/form-data">
-							<div class="row">
-								<div class="col-11">
-									<input type="file"
-										name="archivo" class="form-control" id="archivo">
-								</div>
-								<div class="col-1">
-									<input type="submit" value="Procesar" name="Procesar" onclick="cargarArchivo(archivo)" class="btn btn-success aling-center">
+
+			<div class="navbar-end">
+				<div class="navbar-item">
+					<div class="buttons">
+						<a class="button is-success"
+							href="Controlador?accion=Menu&menu=Salir"> <strong>Salir</strong>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!-- Fin Navbar -->
+
+	<div id="background-image2">
+		<div class="columns">
+			<div class="column is-half my-6">
+				<div class="card">
+ 					<div class="card-image ">
+    					<figure class="image">
+      						<img src="img/Logo+.png" alt="Placeholder image">
+    					</figure>
+  					</div>
+  					<div class="card-content">
+    					<div class="content">
+      						<p class = "is-size-1 has-text-centered has-text-weight-bold">MÓDULO DE GESTIÓN DE PRODUCTOS</p>
+      						<p></p>
+    					</div>
+  					</div>
+				</div>
+				<!-- VALIDACIONES INGRESO PRODUCTO POR PRODUCTO -->
+				<c:if test="${validacion == 0}">
+					<div class = "box has-background-danger">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> Por favor digite el campo del codigo producto </p>
+					</div>
+					</c:if>
+				<c:if test="${validacion == 1}">
+					<div class = "box has-background-danger">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> Por favor digite todos los campos para agregar el producto </p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 2}">
+					<div class = "box has-background-success">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> Producto creado </p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 3}">
+					<div class = "box has-background-danger">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> Ha habido un error :( </p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 4}">
+					<div class = "box has-background-danger">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> El Producto ya existe</p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 5}">
+					<div class = "box has-background-warning">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> Producto eliminado </p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 6}">
+					<div class = "box has-background-success">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> Producto Modificado </p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 7}">
+					<div class = "box has-background-danger">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> El producto no existe no se puede modificar </p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 8}">
+					<div class = "box has-background-danger">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> El Producto no existe </p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 9}">
+					<div class = "box has-background-danger">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> Por favor digite todos los campos para actualizar el producto </p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 10}">
+					<div class = "box has-background-danger">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> El NIT NO EXISTE por favor ingresar primero el proveedor e intentar nuevamente </p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 11}">
+					<div class = "box has-background-danger">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> El NIT NO EXISTE por favor ingresar primero el proveedor e intentar nuevamente </p>
+					</div>
+				</c:if>
+				<!-- fin validaciones -->
+							
+				<!-- VALIDACIONES POR CARGUE MASIVO -->
+				<c:choose>
+					<c:when test="${error == 0}">
+						<div class = "box has-background-danger">
+							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Error: datos inválidos, Revise archivo plano </p>
+						</div>
+					</c:when>
+					<c:when test="${error == 1}">
+						<div class = "box has-background-danger">
+							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Error: no se seleccionó archivo para cargar </p>
+						</div>
+					</c:when>
+					<c:when test="${error == 2}">
+						<div class = "box has-background-success">
+							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Archivo Cargado Exitosamente </p>
+						</div>
+					</c:when>
+					<c:when test="${error == 3}">
+						<div class = "box has-background-danger">
+							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Error: formato de archivo inválido </p>
+						</div>
+					</c:when>
+					<c:when test="${error == 4}">
+						<div class = "box has-background-danger">
+							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Algunos registros no se cargaron: por favor revise si añadio el nit en modulo proveedores </p>
+						</div>
+					</c:when>
+					<c:when test="${error == 5}">
+						<div class = "box has-background-danger">
+							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Algunos registros no se han cargado</p>
+						</div>
+							<!--  
+							<h5 class=text-center>Algunos registros no se han cargado</h5>
+							<h5 class=text-center>Los medicamentos se han cargado</h5>
+							<c:if test="${registros2 != '' }">
+								<h5 class=text-center>,los medicamentos con los codigos: "${registros2}" ya existen en la base de datos</h5>
+							</c:if>
+							<c:if test="${registros == ''}">
+								<h5 class=text-center>,los demas registros se cargaron correctamente</h5>
+							</c:if>
+							<c:if test="${registros != ''}">
+								<h5 class=text-center>,hay registros donde el proveedor no existe en base de datos porfavor verifique el modulo proveedores</h5>
+								<h5 class=text-center>el proveedor ${registros} no existe</h5>
+							</c:if>
+							-->
+					</c:when>
+				</c:choose>		
+				<!-- FIN VALIDACIONES POR CARGUE MASIVO -->	
+			</div>
+			<div class="column my-6">
+				<div class="card mr-3">
+					<header class="card-header ">
+						<p class="card-header-title has-background-success has-text-justified"> 
+							Ingrese los datos del producto
+						</p>
+					</header>
+					<form action="ControladorProductos" method="GET">
+					<div class="card-content has-background-light">
+						<div class="content ">
+							
+							<div class="control is-expanded has-icons-left">
+								<label class="label">Codigo del producto</label>
+    							<input class="input" name="codigo" type="number" placeholder="Digite codigo del producto" value = "${producto.getCodigo_producto()}">
+    							<label class="label">IVA del producto</label>
+    							<input class="input" name="iva" type="number" placeholder="Digite el IVA" value = "${producto.getIvacompra()}">
+    							<label class="label">NIT</label>
+    							<input class="input" name="NIT" type="number" placeholder="Digite el NIT del proveedor, debe estar registrado con anterioridad" value = "${producto.getNitproveedor()}">
+    							<label class="label">Nombre del Producto</label>
+    							<input class="input" name="nombre_prod" type="text" placeholder="Digite el nombre del producto" value = "${producto.getNombre_producto()}">
+    							<label class="label">Precio de compra</label>
+    							<input class="input" name="precio_c" type="number" placeholder="Digite el precio de compra"  value = "${producto.getPrecio_compra()}">
+    							<label class="label">Precio de venta</label>
+    							<input class="input" name="precio_v" type="number" placeholder="Digite el precio de venta"  value = "${producto.getPrecio_venta()}">
+  							</div>
+						</div>
+					</div>
+					<footer class="card-footer">
+						<button class="button is-primary is-light is-fullwidth " name="Agregar" value = "Agregar">Agregar</button>
+						<button class="button is-warning is-light is-fullwidth " name="Actualizar" value = "Actualizar">Actualizar</button>
+						<button class="button is-danger is-light is-fullwidth " name="Eliminar" value = "Eliminar">Eliminar</button>
+						<button class="button is-info is-light is-fullwidth" name="Buscar" value = "Consultar">Buscar</button>
+					</footer>
+					</form>
+					
+					<header class="card-header ">
+						<p class="card-header-title has-background-success has-text-justified"> 
+							Cargue de productos por CSV
+						</p>
+					</header>
+					<form method="POST" name="formulario" enctype="multipart/form-data">
+					<div class="card-content has-background-light">
+						<div class="content ">
+							<div>
+								<div class = "box">
+									<p class= "is-size-5 has-text-centered">
+										Suba un archivo en formato .CSV para cargar los productos
+									</p>
 								</div>
 							</div>
-							<input type="hidden" name="nombre" value="">
-							<input type="hidden" name="nombre2" value="">
-						</form>
-					</div>
-				</div>
-				<div class="container-fluid">
-					<div class="row mt-5">
-						<div class="col-12">
-					<!-- VALIDACIONES -->
-						<div class="card bg-transparent border-0">
-							<c:choose>
-								<c:when test="${error == 0}">
-									<div class="card-body bg-danger rounded" >
-									<h5 class=text-center>Error: datos inválidos, Revise archivo plano</h5>
+							<div class="control is-expanded has-icons-left">
+								<div class="file has-name is-right is-success">
+									<div class="file is-boxed">
+										<label class="file-label">
+    									<input class="file-input" name="archivo" id="archivo" type="file">
+    									<span class="file-cta">
+      									<span class="file-icon">
+											<span class="material-icons"> upload_file</span>
+      									</span>
+      									<span class="file-label">
+        									Seleccione un archivo
+      									</span>
+    								</span>
+  									</label>
+									</div>
 								</div>
-								</c:when>
-								<c:when test="${error == 1}">
-									<div class="card-body bg-danger rounded">
-									<h5 class=text-center>Error: no se seleccionó archivo para cargar</h5>
-								</div>
-								</c:when>
-								<c:when test="${error == 2}">
-									<div class="card-body bg-success rounded">
-									<h5 class=text-center>Archivo Cargado Exitosamente</h5>
-								</div>
-								</c:when>
-								<c:when test="${error == 3}">
-								<div class="card-body bg-danger rounded">
-									<h5 class=text-center>Error: formato de archivo inválido</h5>
-								</div>
-								</c:when>
-								<c:when test="${error == 4}">
-								<div class="card-body bg-danger rounded">
-									<h5 class=text-center>Algunos registros no se cargaron: por favor revise si añadio el nit en modulo proveedores</h5>
-								</div>
-								</c:when>
-								<c:when test="${error == 5}">
-								<div class="card-body bg-danger rounded">
-									<h5 class=text-center>Algunos registros no se han cargado</h5>
-									<h5 class=text-center>Los medicamentos se han cargado</h5>
-									<c:if test="${registros2 != '' }">
-										<h5 class=text-center>,los medicamentos con los codigos: "${registros2}" ya existen en la base de datos</h5>
-									</c:if>
-									<c:if test="${registros == ''}">
-										<h5 class=text-center>,los demas registros se cargaron correctamente</h5>
-									</c:if>
-									<c:if test="${registros != ''}">
-										<h5 class=text-center>,hay registros donde el proveedor no existe en base de datos porfavor verifique el modulo proveedores</h5>
-										<h5 class=text-center>el proveedor ${registros} no existe</h5>
-									</c:if>
-								</div>
-								</c:when>
-							</c:choose>
-						</div>
-							<iframe name="null" style="display: none;"></iframe>
+  							</div>
 						</div>
 					</div>
+					<footer class="card-footer">
+						<button class="button is-success is-fullwidth " name="Procesar" value = "Procesar" onclick="cargarArchivo(archivo)">Procesar</button>
+						<input type="hidden" name="nombre" value="">
+						<input type="hidden" name="nombre2" value="">
+					</footer>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-		<div class="container">
-			<div class="row mt-5">
-				<div class="col-12"></div>
-			</div>
-		</div>
-	<div class="card">
-		<div
-			class="card-header bg-success text-light d-flex justify-content-end">
-			<form action="ControladorProductos" method = "GET">
-				<input type="submit" name="Listar" value="Listar"
-					class="btn btn-primary" />
-			</form>
-		</div>
-		<div class="card-body">
-			<table
-				class="table bg-light table-bordered table-hover table-stripped">
-				<thead>
-					<tr>
-						<th>Codigo producto</th>
-						<th>IVA compra</th>
-						<th>NIT proveedor</th>
-						<th>Nombre producto</th>
-						<th>Precio compra</th>
-						<th>Precio venta</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="productos" items="${lista}">
-						<tr>
-							<td>${productos.getCodigo_producto()}</td>
-							<td>${productos.getIvacompra()}</td>
-							<td>${productos.getNitproveedor()}</td>
-							<td>${productos.getNombre_producto()}</td>
-							<td>${productos.getPrecio_compra()}</td>
-							<td>${productos.getPrecio_venta()}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-
-	</div>
-	<!-- Script de bootstrap5  -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-		crossorigin="anonymous">
-
-	</script>
+	<iframe name="null" style="display: none;"></iframe>
 </body>
 </html>
