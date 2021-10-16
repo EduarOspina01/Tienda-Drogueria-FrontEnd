@@ -59,6 +59,7 @@
 			<div class="navbar-end">
 				<div class="navbar-item">
 					<div class="buttons">
+						<button class="button is-static" name = "sesion" value="${sesion.getNombre_usuario()}">${sesion.getNombre_usuario()}</button>
 						<a class="button is-success"
 							href="Controlador?accion=Menu&menu=Salir"> <strong>Salir</strong>
 						</a>
@@ -144,6 +145,12 @@
 				<c:if test="${validacion == 11}">
 					<div class = "box has-background-danger">
 						<p class= "is-size-3 has-text-weight-bold has-text-centered"> El NIT NO EXISTE por favor ingresar primero el proveedor e intentar nuevamente </p>
+					</div>
+				</c:if>
+				<c:if test="${validacion == 12}">
+					<div class = "box has-background-danger">
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> Producto no se encuentra registrado en base de datos </p>
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> Guarde primero el producto </p>
 					</div>
 				</c:if>
 				<!-- fin validaciones -->

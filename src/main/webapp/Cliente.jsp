@@ -58,6 +58,7 @@
 			<div class="navbar-end">
 				<div class="navbar-item">
 					<div class="buttons">
+						<button class="button is-static" name = "sesion" value="${sesion.getNombre_usuario()}">${sesion.getNombre_usuario()}</button>
 						<a class="button is-success"
 							href="Controlador?accion=Menu&menu=Salir"> <strong>Salir</strong>
 						</a>
@@ -145,6 +146,12 @@
 							<c:if test="${validacion == 9}">
 							<div class = "box has-background-danger">
 								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Por favor digite todos los campos para actualizar el cliente </p>
+							</div>
+							</c:if>
+							<c:if test="${validacion == 10}">
+							<div class = "box has-background-danger">
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Cédula no se encuentra registrada en la base de datos </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Guarde primero el cliente antes de realizar la venta </p>
 							</div>
 							</c:if>
 							<!-- fin validaciones -->

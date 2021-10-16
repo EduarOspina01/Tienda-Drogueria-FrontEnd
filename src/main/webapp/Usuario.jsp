@@ -59,6 +59,7 @@
 			<div class="navbar-end">
 				<div class="navbar-item">
 					<div class="buttons">
+						<button class="button is-static" name = "sesion" value="${sesion.getNombre_usuario()}">${sesion.getNombre_usuario()}</button>
 						<a class="button is-success"
 							href="Controlador?accion=Menu&menu=Salir"> <strong>Salir</strong>
 						</a>

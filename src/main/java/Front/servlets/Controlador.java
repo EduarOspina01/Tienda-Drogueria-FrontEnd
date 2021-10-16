@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.parser.ParseException;
 
@@ -54,6 +55,8 @@ public class Controlador extends HttpServlet {
 	public void validarUsuarios(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		HttpSession sesionuser = request.getSession(true);
+		sesionuser.setMaxInactiveInterval(1800);
 		try {
 			ArrayList<Usuarios> lista = UsuariosJSON.getJSON();
 			String usuario = "";
@@ -63,8 +66,8 @@ public class Controlador extends HttpServlet {
 			if((usuario != "")&& (password != "")) {
 				for (Usuarios user: lista) {
 					if (user.getUsuario().equals(usuario) && user.getPassword().equals(password)) {
-						request.setAttribute("usuario", user);
-						request.getRequestDispatcher("/Controlador?accion=Menu&menu=Principal").forward(request, response);
+						sesionuser.setAttribute("sesion", user);
+						request.getRequestDispatcher("/Controlador?accion=Menu&menu=Principal&usuario").forward(request, response);
 					}
 				}
 				request.setAttribute("validacion",0);
@@ -88,30 +91,40 @@ public class Controlador extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String menu = request.getParameter("menu");
+		HttpSession sesionuser = (HttpSession) request.getSession();
+		Usuarios sesion = (Usuarios) sesionuser.getAttribute("sesion");
 		if (menu.equals("Principal")) {
+			sesionuser.setAttribute("sesion", sesion);
 			request.getRequestDispatcher("Menu.jsp").forward(request, response);
 		}
 		if (menu.equals("Usuario")) {
+			sesionuser.setAttribute("sesion", sesion);
 			request.getRequestDispatcher("Usuario.jsp").forward(request, response);
 			
 		}
 		if (menu.equals("Cliente")) {
+			sesionuser.setAttribute("sesion", sesion);
 			request.getRequestDispatcher("Cliente.jsp").forward(request, response);
 		}
 		if (menu.equals("Proveedor")) {
+			sesionuser.setAttribute("sesion", sesion);
 			request.getRequestDispatcher("Proveedores.jsp").forward(request, response);
 		}
 		if (menu.equals("Productos")) {
+			sesionuser.setAttribute("sesion", sesion);
 			request.getRequestDispatcher("Productos.jsp").forward(request, response);
 		}
 		if (menu.equals("Ventas")) {
+			sesionuser.setAttribute("sesion", sesion);
 			request.getRequestDispatcher("Ventas.jsp").forward(request, response);
 		}
 		if (menu.equals("Reportes")) {
+			sesionuser.setAttribute("sesion", sesion);
 			out.println("<h1>Aqui va la interfaz Reportes</h1>");
 			//request.getRequestDispatcher("Usuario.jsp").forward(request, response);
 		}
 		if (menu.equals("Salir")) {
+			sesionuser.invalidate();
 			request.getRequestDispatcher("Index.jsp").forward(request, response);
 		}
 	}

@@ -59,6 +59,7 @@
 			<div class="navbar-end">
 				<div class="navbar-item">
 					<div class="buttons">
+						<button class="button is-static" name = "sesion" value="${sesion.getNombre_usuario()}">${sesion.getNombre_usuario()}</button>
 						<a class="button is-success"
 							href="Controlador?accion=Menu&menu=Salir"> <strong>Salir</strong>
 						</a>
@@ -68,6 +69,7 @@
 		</div>
 	</nav>
 	<!-- Fin Navbar -->
+	<form action="ControladorVentas" method="POST">
 	<div id="background-image">
 		<div class="columns">
 			<div class="column is-half my-6">
@@ -79,7 +81,6 @@
 					</header>
 					
 					<div class="card-content">
-						<form action="ControladorVentas" method="POST">
 						<div class="field is-horizontal">
 							<div class="field-label is-normal">
 								<label class="label">Cedula</label>
@@ -94,23 +95,21 @@
         									</span>
 										</p>
 										<p class = "control is-expanded">
-											<button class="button is-success" name = "Buscar1" value ="Buscar Cliente">
+											<button class="button is-success" name = "Buscar1" value ="Buscar_Cliente">
 												Buscar
 											</button>
 										</p>
 									</div>
 								</div>
 								<div class = "field is-expanded">
-									<p class= "control">
-										<fieldset disabled>
+									<div class= "control">
+										<fieldset>
 											<input class="input" type="text" placeholder="Nombre Cliente" name = "salidaCleinte" value = "${cliente.getNombre_cliente()}">
 										</fieldset>
-									</p>
+									</div>
 								</div>
 							</div>
 						</div>
-						</form>
-						<form action="ControladorVentas" method="POST">
 						<div class="field is-horizontal">
 							<div class="field-label is-normal">
    								<label class="label">Producto</label>
@@ -125,18 +124,18 @@
         									</span>
 										</p>
 										<p class = "control is-expanded">
-											<button class="button is-success" name = "Buscar2" value ="Buscar Producto">
+											<button class="button is-success" name = "Buscar2" value ="Buscar_Producto">
 												Buscar
 											</button>
 										</p>
 									</div>
   								</div>
   								<div class="field is-expanded" >
-  									<p class= "control">
-										<fieldset disabled>
+  									<div class= "control">
+										<fieldset>
 											<input class="input" type="text" placeholder="Codigo Producto" name="nombre_prod" value = "${producto.getNombre_producto()}">
 										</fieldset>
-									</p>
+									</div>
   								</div>
   							</div>
 						</div>
@@ -146,15 +145,15 @@
 								<div class="field is-expanded">
 									<div class="field has-addons">
 										<p class="control">
-											<a class="button is-success" title="Disabled button" disabled>
+											<a class="button is-success" disabled>
            										 Valor
          									</a>
 										</p>
-										<p class="control is-expanded">
-											<fieldset disabled>
-											<input class="input" type="text" placeholder="Valor" name="valor" value = "${producto.getPrecio_venta()}">
+										<div class="control is-expanded">
+											<fieldset >
+											<input class="input" type="text" placeholder="Valor" name="Valor" value = "${producto.getPrecio_compra()}">
 											</fieldset>
-										</p>
+										</div>
 									</div>
 								</div>
 								
@@ -165,14 +164,13 @@
            										 IVA
          									</a>
 										</p>
-										<p class="control is-expanded">
-											<fieldset disabled>
+										<div class="control is-expanded">
+											<fieldset>
 											<input class="input" type="text" placeholder="IVA" name="IVA" value = "${producto.getIvacompra()}">
 											</fieldset>
-										</p>
+										</div>
 									</div>
-								</div>
-								
+								</div>	
 								<div class="field is-expanded">
 									<div class="field has-addons">
 										<p class="control">
@@ -181,24 +179,22 @@
          									</a>
 										</p>
 										<p class="control is-expanded">
-											<input class="input" type="text" placeholder="cantidad" name = "Agregar" value ="Agregar Producto">
+											<input class="input" type="text" placeholder="Ingrese la cantidad cantidad" name = "cantidad" value ="">
 										</p>
 									</div>
 								</div>
 							</div>
-						</div>
-						</form>
+						</div>				
 					</div>
 					<footer class="card-footer">
-    					<p class="card-footer-item">
-     						<a href="#">Agregar Producto</a>
-    					</p>
+						<button class="button is-fullwidth is-success " name="Agregar" value = "Agregar">
+							Agregar Producto
+						</button>
   					</footer>
 				</div>
 			</div>
 			<div class = "column my-6">
 				<div class="card">
-					<form action="ControladorVentas" method="POST">
 						<div class="card-content">
 							<div class="field is-horizontal">
 								<div class="field-label is-normal">
@@ -206,11 +202,11 @@
 								</div>
 								<div class="field-body">
 									<div class="field">
-										<p class="control is-expanded">
-											<fieldset disabled>
-											<input class="input" type="text" placeholder="000000" name="con_fac">
+										<div class="control is-expanded">
+											<fieldset >
+											<input class="input" type="text" placeholder="0" name="con_fac" value = "${numerofactura}"> 
 											</fieldset>
-										</p>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -223,12 +219,21 @@
 										<th>COD</th>
 										<th>Producto</th>
 										<th>Cantidad</th>
-										<th>Total</th>
+										<th>Total sin iva</th>
+										<th>Iva</th>
+										<th>Valor total</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="usuarios" items="${lista}">
+									<c:forEach var="productos" items="${listaventas}">
 										<tr>
+											<td>${productos.getCodigo_dte()}</td>
+											<td>${productos.getCod_producto()}</td>
+											<td>${productos.getDescripcion()}</td>
+											<td>${productos.getCantidad()}</td>
+											<td>${productos.getValor_sin_iva()}</td>
+											<td>${productos.getValor_iva()}</td>
+											<td>${productos.getValor_total()}</td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -239,25 +244,25 @@
 						<div class="card-content">
 							<div class="field is-grouped is-grouped-centered">
  				 				<p class="control">
-    								<a class="button is-primary">
-      									Confirmar venta
-    								</a>
+ 				 					<button class="button is-primary " name="Finalizar" value = "Finalizar">
+ 				 						Confirmar venta
+ 				 					</button>
   								</p>
   								<p class="control">
-    								<a class="button is-danger">
-      									Cancelar Venta
-    								</a>
+  									<button class="button is-danger " name="Cancelar" value = "Cancelar">
+ 				 						Cancelar Venta
+ 				 					</button>
   								</p>
 							</div>
 							<div class="field is-horizontal">
 								<div class="field-label is-normal">
-									<label class="label has-text-danger">TOTAL VENTA:</label>
+									<label class="label has-text-danger">TOTAL:</label>
 								</div>
 								<div class="field-body">
 									<div class="field">
 										<p class="control">
-											<fieldset disabled>
-												<input class="input" type="text" placeholder="0.00">
+											<fieldset>
+												<input class="input" type="text" placeholder="0.00" value = "${totalsubtotal}">
 											</fieldset>
 										</p>
 									</div>
@@ -269,8 +274,8 @@
 								<div class="field-body">
 									<div class="field">
 										<p class="control">
-											<fieldset disabled>
-												<input class="input" type="text" placeholder="0.00">
+											<fieldset >
+												<input class="input" type="text" placeholder="0.00" value = "${totaliva}">
 											</fieldset>
 										</p>
 									</div>
@@ -282,18 +287,23 @@
 								<div class="field-body">
 									<div class="field">
 										<p class="control">
-											<fieldset disabled>
-												<input class="input" type="text" placeholder="0.00">
+											<fieldset>
+												<input class="input" type="text" placeholder="0.00" value = "${totalapagar}">
 											</fieldset>
 										</p>
 									</div>
 								</div>
 							</div>
+							<c:if test="${validacion == 1}">
+							<div class = "box">
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Compra finalizada, asignada a la factura ${consecutivo}</p>
+							</div>
+							</c:if>
 						</div>
-					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+	</form>
 </body>
 </html>
