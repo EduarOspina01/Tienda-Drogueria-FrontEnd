@@ -124,7 +124,7 @@ public class ControladorVentas extends HttpServlet {
     					contador = venta.getCodigo_venta();
     				}
     			}
-    			if(contador > 1) {
+    			if(contador > 0 ) {
     				request.setAttribute("numerofactura", contador+1);
     			}else {
     				Long numfac = 1L;
