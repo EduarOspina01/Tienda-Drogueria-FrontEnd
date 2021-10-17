@@ -70,7 +70,7 @@
 	</nav>
 	<!-- Fin Navbar -->
 	<form action="ControladorVentas" method="POST">
-	<div id="background-image">
+	<div id="background-image"> 
 		<div class="columns">
 			<div class="column is-half my-6">
 				<div class="card">
@@ -91,7 +91,7 @@
 										<p class = "control is-expanded has-icons-left">
 											<input class="input" type="number" name ="txtCedula" placeholder="Ingrese la cedula del cliente" value = "${cliente.getCedula_cliente()}">
 											<span class="icon is-small is-left">
-          										<i class="fas fa-envelope"></i>
+          										<span class="material-icons"> perm_identity</span>
         									</span>
 										</p>
 										<p class = "control is-expanded">
@@ -120,7 +120,7 @@
 										<p class = "control is-expanded has-icons-left">
 											<input class="input" type="text" placeholder="Ingrese el codigo del producto" name ="txtCod" value = "${producto.getCodigo_producto()}">
 											<span class="icon is-small is-left">
-          										<i class="fas fa-envelope"></i>
+          										 <span class="material-icons"> medical_services </span>
         									</span>
 										</p>
 										<p class = "control is-expanded">
@@ -303,6 +303,12 @@
 				</div>
 			</div>
 		</div>
+			<div class ="container is-max-desktop ">
+  			<div class="box mt-5 has-text-centered inline inline-block has-background-light">
+  				<p class="title is-3 has-text-center">MODULO GESTION DE VENTAS</p>
+  				<p class="title is-5 has-text-center">Bienvenido a su drogueria</p>
+			</div>
+  		</div>
 	</div>
 	</form>
 </body>

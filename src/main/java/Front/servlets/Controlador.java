@@ -120,8 +120,7 @@ public class Controlador extends HttpServlet {
 		}
 		if (menu.equals("Reportes")) {
 			sesionuser.setAttribute("sesion", sesion);
-			out.println("<h1>Aqui va la interfaz Reportes</h1>");
-			//request.getRequestDispatcher("Usuario.jsp").forward(request, response);
+			request.getRequestDispatcher("Reportes.jsp").forward(request, response);
 		}
 		if (menu.equals("Salir")) {
 			sesionuser.invalidate();

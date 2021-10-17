@@ -217,17 +217,47 @@
 							
 							<div class="control is-expanded has-icons-left">
 								<label class="label">Codigo del producto</label>
-    							<input class="input" name="codigo" type="number" placeholder="Digite codigo del producto" value = "${producto.getCodigo_producto()}">
+								<p class="control has-icons-left">
+    								<input class="input" name="codigo" type="number" placeholder="Digite codigo del producto" value = "${producto.getCodigo_producto()}">
+    								<span class="icon is-small is-left"> 
+											<span class="material-icons"> pin</span>
+										</span>
+								</p>
     							<label class="label">IVA del producto</label>
-    							<input class="input" name="iva" type="number" placeholder="Digite el IVA" value = "${producto.getIvacompra()}">
+    							<p class="control has-icons-left">
+    								<input class="input" name="iva" type="number" placeholder="Digite el IVA" value = "${producto.getIvacompra()}">
+    							    <span class="icon is-small is-left"> 
+											<span class="material-icons"> money</span>
+										</span>
+								</p>
     							<label class="label">NIT</label>
-    							<input class="input" name="NIT" type="number" placeholder="Digite el NIT del proveedor, debe estar registrado con anterioridad" value = "${producto.getNitproveedor()}">
+    							<p class="control has-icons-left">
+    								<input class="input" name="NIT" type="number" placeholder="Digite el NIT del proveedor, debe estar registrado con anterioridad" value = "${producto.getNitproveedor()}">
+    							    <span class="icon is-small is-left"> 
+											<span class="material-icons"> person_search</span>
+										</span>
+								</p>
     							<label class="label">Nombre del Producto</label>
-    							<input class="input" name="nombre_prod" type="text" placeholder="Digite el nombre del producto" value = "${producto.getNombre_producto()}">
+    							<p class="control has-icons-left">
+    								<input class="input" name="nombre_prod" type="text" placeholder="Digite el nombre del producto" value = "${producto.getNombre_producto()}">
+    							    <span class="icon is-small is-left"> 
+											<span class="material-icons"> medical_services</span>
+										</span>
+								</p>
     							<label class="label">Precio de compra</label>
-    							<input class="input" name="precio_c" type="number" placeholder="Digite el precio de compra"  value = "${producto.getPrecio_compra()}">
+    							<p class="control has-icons-left">
+    								<input class="input" name="precio_c" type="number" placeholder="Digite el precio de compra"  value = "${producto.getPrecio_compra()}">
+    							    <span class="icon is-small is-left"> 
+											<span class="material-icons"> sell</span>
+										</span>
+								</p>	
     							<label class="label">Precio de venta</label>
-    							<input class="input" name="precio_v" type="number" placeholder="Digite el precio de venta"  value = "${producto.getPrecio_venta()}">
+    							<p class="control has-icons-left">
+    								<input class="input" name="precio_v" type="number" placeholder="Digite el precio de venta"  value = "${producto.getPrecio_venta()}">
+  							        <span class="icon is-small is-left"> 
+											<span class="material-icons"> sell</span>
+										</span>
+								</p>
   							</div>
 						</div>
 					</div>

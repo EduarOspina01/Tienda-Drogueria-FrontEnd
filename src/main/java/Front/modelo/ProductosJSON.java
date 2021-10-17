@@ -19,6 +19,7 @@ public class ProductosJSON {
 	
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
+	//private static String sitio = "http://localhost:8080/back_drogueria-0.0.1-SNAPSHOT/";
 	
 	
 	public static ArrayList<Productos> parsingUsuarios(String json) throws ParseException {//devulve un arraylist

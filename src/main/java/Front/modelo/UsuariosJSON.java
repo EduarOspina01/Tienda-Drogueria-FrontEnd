@@ -20,6 +20,7 @@ public class UsuariosJSON {
 
 	private static URL url;
 	private static String sitio = "http://localhost:5000/";
+	//private static String sitio = "http://localhost:8080/back_drogueria-0.0.1-SNAPSHOT/";
 	
 	/**
 	 * Agruega informacion al objeto Usuario de la carpeta modelo

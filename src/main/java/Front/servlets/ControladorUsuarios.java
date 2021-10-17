@@ -66,7 +66,11 @@ public class ControladorUsuarios extends HttpServlet {
 					ArrayList<Usuarios> lista = UsuariosJSON.getJSON();
 					for (Usuarios usuario_prueba: lista) {
 						if(usuario_prueba.getCedula_usuario() == Long.parseLong(cedula)) {
-							existe = true;
+							if(usuario_prueba.getUsuario().equals("admininicial")) {
+								existe = false;	
+							}else {
+								existe = true;
+							}
 						}
 					}
 					if(!existe) {
@@ -138,7 +142,11 @@ public class ControladorUsuarios extends HttpServlet {
 					ArrayList<Usuarios> lista = UsuariosJSON.getJSON();
 					for (Usuarios usuario_prueba: lista) {
 						if(usuario_prueba.getCedula_usuario() == Long.parseLong(cedula)) {
-							existe = true;
+							if(usuario_prueba.getUsuario().equals("admininicial")) {
+								existe = false;	
+							}else {
+								existe = true;
+							}
 						}
 					}
 					if(!existe) {
@@ -173,7 +181,11 @@ public class ControladorUsuarios extends HttpServlet {
 					ArrayList<Usuarios> listaid = UsuariosJSON.getforIdJSON(cedula);
 					for (Usuarios usuario_prueba: listaid) {
 						if(usuario_prueba.getCedula_usuario() == Long.parseLong(cedula)) {
-							existe = true;
+							if(usuario_prueba.getUsuario().equals("admininicial")) {
+								existe = false;	
+							}else {
+								existe = true;
+							}
 						}
 					}
 				} catch (Exception e) {
