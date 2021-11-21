@@ -81,7 +81,7 @@
   					</div>
   					<div class="card-content">
     					<div class="content">
-      						<p class = "is-size-1 has-text-centered has-text-weight-bold">MÓDULO DE GESTIÓN DE PRODUCTOS</p>
+      						<p class = "is-size-1 has-text-centered has-text-weight-bold">MÃ“DULO DE GESTIÃ“N DE PRODUCTOS</p>
       						<p></p>
     					</div>
   					</div>
@@ -129,7 +129,7 @@
 				</c:if>
 				<c:if test="${validacion == 8}">
 					<div class = "box has-background-danger">
-						<p class= "is-size-3 has-text-weight-bold has-text-centered"> El Producto no existe </p>
+						<p class= "is-size-3 has-text-weight-bold has-text-centered"> El codigo del producto no se encuentra registrado </p>
 					</div>
 				</c:if>
 				<c:if test="${validacion == 9}">
@@ -159,12 +159,12 @@
 				<c:choose>
 					<c:when test="${error == 0}">
 						<div class = "box has-background-danger">
-							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Error: datos inválidos, Revise archivo plano </p>
+							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Error: datos invÃ¡lidos, Revise archivo plano </p>
 						</div>
 					</c:when>
 					<c:when test="${error == 1}">
 						<div class = "box has-background-danger">
-							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Error: no se seleccionó archivo para cargar </p>
+							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Error: no se seleccionÃ³ archivo para cargar </p>
 						</div>
 					</c:when>
 					<c:when test="${error == 2}">
@@ -174,12 +174,12 @@
 					</c:when>
 					<c:when test="${error == 3}">
 						<div class = "box has-background-danger">
-							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Error: formato de archivo inválido </p>
+							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Error: formato de archivo invÃ¡lido </p>
 						</div>
 					</c:when>
 					<c:when test="${error == 4}">
 						<div class = "box has-background-danger">
-							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Algunos registros no se cargaron: por favor revise si añadio el nit en modulo proveedores </p>
+							<p class= "is-size-3 has-text-weight-bold has-text-centered"> Algunos registros no se cargaron: por favor revise si aÃ±adio el nit en modulo proveedores </p>
 						</div>
 					</c:when>
 					<c:when test="${error == 5}">
