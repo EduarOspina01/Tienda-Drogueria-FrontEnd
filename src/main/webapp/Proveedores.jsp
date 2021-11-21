@@ -80,7 +80,7 @@
   					</div>
   					<div class="card-content">
     					<div class="content">
-      						<p class = "is-size-1 has-text-centered has-text-weight-bold">MÓDULO DE GESTIÓN DE PROVEEDORES</p>
+      						<p class = "is-size-1 has-text-centered has-text-weight-bold">MÃ“DULO DE GESTIÃ“N DE PROVEEDORES</p>
       						<p></p>
     					</div>
   					</div>
@@ -105,7 +105,7 @@
 							</c:if>
 							<c:if test="${validacion == 1}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Por favor digite todos los campos para agregar el proveedor </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Faltan datos del proveedor, por favor complete todos los campos </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 2}">
@@ -115,7 +115,7 @@
 							</c:if>
 							<c:if test="${validacion == 3}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Ha habido un error :( </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Ha habido un error </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 4}">
@@ -130,17 +130,17 @@
 							</c:if>
 							<c:if test="${validacion == 6}">
 							<div class = "box has-background-success">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Proveedor Modificado </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Proveedor modificado </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 7}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> El Proveedor no existe no se puede modificar </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> El Proveedor Inexistente, no se puede modificar </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 8}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> El proveedor no existe </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Proveedor Inexistente </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 9}">
@@ -178,7 +178,7 @@
 											<span class="material-icons">location_on</span>
 										</span>
 								</p>
-    							<label class="label">Teléfono</label>
+    							<label class="label">TelÃ©fono</label>
     							<p class="control has-icons-left">
     							<input class="input" name="Tel" type="number" placeholder="Digite el Telefono"  value = "${proveedor.getTelefono_proveedor()}">
   							    <span class="icon is-small is-left"> 
