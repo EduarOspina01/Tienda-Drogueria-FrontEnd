@@ -140,7 +140,7 @@
 							</c:if>
 							<c:if test="${validacion == 8}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Cliente Inexistente </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> No se encuentra registrada la cedula </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 9}">
