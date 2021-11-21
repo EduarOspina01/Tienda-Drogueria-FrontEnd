@@ -80,7 +80,7 @@
   					</div>
   					<div class="card-content">
     					<div class="content">
-      						<p class = "is-size-1 has-text-centered has-text-weight-bold">MÓDULO DE GESTIÓN DE CLIENTES</p>
+      						<p class = "is-size-1 has-text-centered has-text-weight-bold">MÃ“DULO DE GESTIÃ“N DE CLIENTES</p>
       						<p></p>
     					</div>
   					</div>
@@ -105,7 +105,7 @@
 							</c:if>
 							<c:if test="${validacion == 1}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Por favor digite todos los campos para agregar el cliente </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Faltan datos del cliente, por favor complete todos los campos </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 2}">
@@ -115,12 +115,12 @@
 							</c:if>
 							<c:if test="${validacion == 3}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Ha habido un error :( </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Ha habido un error </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 4}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> El cliente ya existe</p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> El cliente ya existe </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 5}">
@@ -130,17 +130,17 @@
 							</c:if>
 							<c:if test="${validacion == 6}">
 							<div class = "box has-background-success">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Cliente Modificado </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Cliente modificado </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 7}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> El cliente no existe no se puede modificar </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Cliente Inexistente, no se puede modificar </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 8}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> El cliente no existe </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Cliente Inexistente </p>
 							</div>
 							</c:if>
 							<c:if test="${validacion == 9}">
@@ -150,13 +150,13 @@
 							</c:if>
 							<c:if test="${validacion == 10}">
 							<div class = "box has-background-danger">
-								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Cédula no se encuentra registrada en la base de datos </p>
+								<p class= "is-size-3 has-text-weight-bold has-text-centered"> La cÃ©dula no se encuentra registrada en la base de datos </p>
 								<p class= "is-size-3 has-text-weight-bold has-text-centered"> Guarde primero el cliente antes de realizar la venta </p>
 							</div>
 							</c:if>
 							<!-- fin validaciones -->
 							<div class="control is-expanded has-icons-left">
-								<label class="label">Cédula</label>
+								<label class="label">CÃ©dula</label>
 								<p class="control has-icons-left">
     							<input class="input" name="cedula" type="number" placeholder="Digite Cedula " value = "${clientes.getCedula_cliente()}">
     							<span class="icon is-small is-left"> 
@@ -184,7 +184,7 @@
 											<span class="material-icons">outlet</span>
 										</span>
 								</p>
-    							<label class="label">Teléfono</label>
+    							<label class="label">TelÃ©fono</label>
     							<p class="control has-icons-left">
     							<input class="input" name="telefono" type="number" placeholder="Digite su Telefono"  value = "${clientes.getTelefono_cliente()}">
     							<span class="icon is-small is-left"> 
